@@ -11,6 +11,8 @@ navigation = "2.8.5"
 room = "2.5.2"
 camerax = "1.4.1"
 mlkit = "16.0.1"
+navigationFragment = "2.7.3"
+navigationUi = "2.9.6"
 
 [libraries]
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -37,6 +39,8 @@ camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "
 
 # ML Kit
 mlkit-text-recognition = { group = "com.google.mlkit", name = "text-recognition", version.ref = "mlkit" }
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
+androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

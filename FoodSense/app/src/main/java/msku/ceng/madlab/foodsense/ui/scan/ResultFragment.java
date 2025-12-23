@@ -101,43 +101,144 @@ public class ResultFragment extends Fragment {
     }
 
     private boolean checkAllergenInText(String text, String allergen) {
-        // Direct match
-        if (text.contains(allergen)) {
-            return true;
-        }
+        // Hem Türkçe hem İngilizce içerikleri ara
+        allergen = allergen.toLowerCase().trim();
 
-        // Check common derivatives
         switch (allergen) {
             case "lactose":
-            case "dairy":
-                return text.contains("milk") || text.contains("dairy") ||
-                        text.contains("lactose") || text.contains("whey") ||
-                        text.contains("casein") || text.contains("butter") ||
-                        text.contains("cream") || text.contains("cheese");
+                // İngilizce kelimeler
+                return text.contains("milk") ||
+                        text.contains("dairy") ||
+                        text.contains("lactose") ||
+                        text.contains("whey") ||
+                        text.contains("casein") ||
+                        text.contains("butter") ||
+                        text.contains("cream") ||
+                        text.contains("cheese") ||
+                        text.contains("yogurt") ||
+                        // Türkçe kelimeler
+                        text.contains("süt") ||
+                        text.contains("laktoz") ||
+                        text.contains("peynir") ||
+                        text.contains("yoğurt") ||
+                        text.contains("tereyağ") ||
+                        text.contains("tereyağı") ||
+                        text.contains("krema") ||
+                        text.contains("kaymak") ||
+                        text.contains("ayran");
 
             case "gluten":
-                return text.contains("wheat") || text.contains("barley") ||
-                        text.contains("rye") || text.contains("gluten");
+                return text.contains("wheat") ||
+                        text.contains("barley") ||
+                        text.contains("rye") ||
+                        text.contains("gluten") ||
+                        text.contains("flour") ||
+                        // Türkçe kelimeler
+                        text.contains("buğday") ||
+                        text.contains("arpa") ||
+                        text.contains("çavdar") ||
+                        text.contains("un");
 
             case "egg":
-                return text.contains("egg") || text.contains("albumin");
+                return text.contains("egg") ||
+                        text.contains("albumin") ||
+                        text.contains("egg powder") ||
+                        // Türkçe kelimeler
+                        text.contains("yumurta") ||
+                        text.contains("yumurta tozu");
 
             case "soy":
-                return text.contains("soy") || text.contains("soya");
+                return text.contains("soy") ||
+                        text.contains("soya") ||
+                        text.contains("soybean") ||
+                        text.contains("soy sauce") ||
+                        // Türkçe kelimeler
+                        text.contains("soya") ||
+                        text.contains("soya fasulyesi") ||
+                        text.contains("soya sosu");
 
             case "peanut":
-                return text.contains("peanut") || text.contains("groundnut");
+                return text.contains("peanut") ||
+                        text.contains("groundnut") ||
+                        text.contains("nut") ||
+                        // Türkçe kelimeler
+                        text.contains("yer fıstığı") ||
+                        text.contains("yerfıstığı") ||
+                        text.contains("fıstık") ||
+                        text.contains("yer fistigi") || // i harfi olmadan
+                        text.contains("yerfistigi");
 
             case "seafood":
-                return text.contains("fish") || text.contains("seafood") ||
-                        text.contains("shrimp") || text.contains("crab") ||
-                        text.contains("lobster") || text.contains("shellfish");
+                return text.contains("fish") ||
+                        text.contains("seafood") ||
+                        text.contains("shrimp") ||
+                        text.contains("crab") ||
+                        text.contains("lobster") ||
+                        text.contains("mussel") ||
+                        text.contains("oyster") ||
+                        text.contains("squid") ||
+                        text.contains("octopus") ||
+                        text.contains("tuna") ||
+                        text.contains("salmon") ||
+                        text.contains("shellfish") ||
+                        // Türkçe kelimeler
+                        text.contains("balık") ||
+                        text.contains("balik") || // ı harfi olmadan
+                        text.contains("deniz ürünü") ||
+                        text.contains("deniz urunu") || // ü harfi olmadan
+                        text.contains("karides") ||
+                        text.contains("yengeç") ||
+                        text.contains("yengec") ||
+                        text.contains("istakoz") ||
+                        text.contains("midye") ||
+                        text.contains("istiridye") ||
+                        text.contains("kalamar") ||
+                        text.contains("ahtapot") ||
+                        text.contains("ton balığı") ||
+                        text.contains("ton baligi") ||
+                        text.contains("somon") ||
+                        text.contains("hamsi") ||
+                        text.contains("levrek") ||
+                        text.contains("çipura") ||
+                        text.contains("cipura");
 
             case "sugar":
-                return text.contains("sugar") || text.contains("sucrose") ||
-                        text.contains("glucose") || text.contains("fructose");
+                return text.contains("sugar") ||
+                        text.contains("sucrose") ||
+                        text.contains("glucose") ||
+                        text.contains("fructose") ||
+                        text.contains("dextrose") ||
+                        text.contains("corn syrup") ||
+                        text.contains("honey") ||
+                        // Türkçe kelimeler
+                        text.contains("şeker") ||
+                        text.contains("seker") || // ş harfi olmadan
+                        text.contains("sakkaroz") ||
+                        text.contains("glikoz") ||
+                        text.contains("fruktoz") ||
+                        text.contains("dekstroz") ||
+                        text.contains("mısır şurubu") ||
+                        text.contains("misir surubu") || // ı, ş, ü harfleri olmadan
+                        text.contains("bal");
+
+            case "trans fats":
+                return text.contains("trans fat") ||
+                        text.contains("hydrogenated") ||
+                        text.contains("partially hydrogenated") ||
+                        text.contains("vegetable oil") ||
+                        text.contains("margarine") ||
+                        // Türkçe kelimeler
+                        text.contains("trans yağ") ||
+                        text.contains("trans yag") || // ğ harfi olmadan
+                        text.contains("hidrojenize") ||
+                        text.contains("kısmi hidrojenize") ||
+                        text.contains("kismi hidrojenize") || // ı harfi olmadan
+                        text.contains("bitkisel yağ") ||
+                        text.contains("bitkisel yag") ||
+                        text.contains("margarin");
 
             default:
+                // Varsayılan: direkt arama
                 return text.contains(allergen);
         }
     }

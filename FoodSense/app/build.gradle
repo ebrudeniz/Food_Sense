@@ -46,6 +46,8 @@ dependencies {
 
     // Room Database
     implementation libs.room.runtime
+    implementation libs.androidx.navigation.fragment
+    implementation libs.androidx.navigation.ui
     annotationProcessor 'androidx.room:room-compiler:2.5.2'
 
     // CameraX

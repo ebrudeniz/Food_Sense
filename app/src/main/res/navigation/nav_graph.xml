@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <!-- Login Fragment -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="msku.ceng.madlab.foodsense.ui.auth.LoginFragment"
+        android:label="Login">
+        <action
+            android:id="@+id/action_login_to_signUp"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_login_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Sign Up Fragment -->
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="msku.ceng.madlab.foodsense.ui.auth.SignUpFragment"
+        android:label="Sign Up">
+        <action
+            android:id="@+id/action_signUp_to_allergenSelection"
+            app:destination="@id/allergenSelectionFragment" />
+    </fragment>
+
+    <!-- Allergen Selection Fragment -->
+    <fragment
+        android:id="@+id/allergenSelectionFragment"
+        android:name="msku.ceng.madlab.foodsense.ui.auth.AllergenSelectionFragment"
+        android:label="Select Allergens">
+        <action
+            android:id="@+id/action_allergen_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_allergen_to_info"
+            app:destination="@id/ingredientInfoFragment" />
+    </fragment>
+
+    <!-- Ingredient Info Fragment -->
+    <fragment
+        android:id="@+id/ingredientInfoFragment"
+        android:name="msku.ceng.madlab.foodsense.ui.auth.IngredientInfoFragment"
+        android:label="Ingredient Info" />
+
+    <!-- Home Fragment -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="msku.ceng.madlab.foodsense.ui.home.HomeFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/action_home_to_scan"
+            app:destination="@id/scanFragment" />
+        <action
+            android:id="@+id/action_home_to_profile"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <!-- Profile Fragment -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="msku.ceng.madlab.foodsense.ui.home.ProfileFragment"
+        android:label="Profile">
+        <action
+            android:id="@+id/action_profile_to_updateAllergens"
+            app:destination="@id/updateAllergensFragment" />
+        <action
+            android:id="@+id/action_profile_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- Update Allergens Fragment -->
+    <fragment
+        android:id="@+id/updateAllergensFragment"
+        android:name="msku.ceng.madlab.foodsense.ui.home.UpdateAllergensFragment"
+        android:label="Update Allergens" />
+
+    <!-- Scan Fragment -->
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="msku.ceng.madlab.foodsense.ui.scan.ScanFragment"
+        android:label="Scan Product">
+        <action
+            android:id="@+id/action_scan_to_result"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_scan_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- Result Fragment -->
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="msku.ceng.madlab.foodsense.ui.scan.ResultFragment"
+        android:label="Result">
+        <action
+            android:id="@+id/action_result_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+</navigation>
